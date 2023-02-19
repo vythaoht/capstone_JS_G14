@@ -1,0 +1,10 @@
+header {
+  background-color: $color-pink-dark;
+  height: $header-height;
+  width: 100%;
+
+  & .navbar {
+    background-color: $color-pink-dark;
+    padding-top: 25px;
+  }
+}

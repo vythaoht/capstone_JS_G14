@@ -1,2 +1,10 @@
 @import "./base/reset";
 @import "./base/customize";
+
+@import "./helpers/variable";
+@import "./helpers/mixins";
+
+@import "./layouts/header";
+@import "./layouts/carousel";
+
+@import "./components/cart";
