@@ -1,19 +1,24 @@
 .carousel {
   margin-top: 90px;
+
   & .carousel__products {
     background-color: $color-pink;
+
     & .card-group {
       gap: 20px;
+
       & .btn__add {
         background-color: $bg-color-pink-dark;
       }
     }
   }
 }
+
 .modal__carousel {
   .modal-header {
     background-color: $bg-color-pink-dark;
   }
+
   .modal-footer .button__purchase {
     background-color: $bg-color-pink-dark;
   }
@@ -24,6 +29,7 @@
   .carousel__products {
     .card-group {
       gap: 0 !important;
+
       .card {
         width: 48%;
         margin: 5px;
