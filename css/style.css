@@ -2,4 +2,59 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+header {
+  background-color: #efd3df;
+  height: 90px;
+  width: 100%;
+}
+header .navbar {
+  background-color: #efd3df;
+  padding-top: 25px;
+}
+
+.carousel {
+  margin-top: 90px;
+}
+.carousel .carousel__products {
+  background-color: #f3e2ea;
+}
+.carousel .carousel__products .card-group {
+  gap: 20px;
+}
+.carousel .carousel__products .card-group .btn__add {
+  background-color: #efd3df;
+}
+
+.modal__carousel .modal-header {
+  background-color: #efd3df;
+}
+.modal__carousel .modal-footer .button__purchase {
+  background-color: #efd3df;
+}
+
+@media screen and (max-width: 992px) {
+  .carousel__products .card-group {
+    gap: 0 !important;
+  }
+  .carousel__products .card-group .card {
+    width: 48%;
+    margin: 5px;
+    flex: unset;
+  }
+}
+.table__cart td {
+  vertical-align: middle;
+}
+.table__cart img {
+  height: 70px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.table__cart .quantity__button {
+  margin: 0 4px;
+  padding: 2px 6px;
+  border: none;
+  background-color: transparent;
 }/*# sourceMappingURL=style.css.map */
