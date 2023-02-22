@@ -245,7 +245,7 @@
                         ><i class="fa-solid fa-comment"></i
                       ></span>
                       <input
-                        id="Description"
+                        id="description"
                         class="form-control"
                         placeholder="Description"
                       />
@@ -273,30 +273,15 @@
               </div>
               <!-- Modal footer -->
               <div class="modal-footer">
-                <button
-                  id="btnAddPhone"
-                  type="button"
-                  class="btn btn-success"
-                  onclick=""
-                >
-                  Add Phone
-                </button>
-                <button
-                  id="btnUpdateProduct"
-                  type="button"
-                  class="btn btn-success"
-                  onclick=""
-                >
-                  Update Phone
-                </button>
-                <button
-                  id="btnClose"
-                  type="button"
-                  class="btn btn-danger"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
+                <!-- <button id="btnAddPhone" type="button" class="btn btn-success" onclick="createProduct()">
+                Add Phone
+              </button> -->
+                <!-- <button id="btnUpdateProduct" type="button" class="btn btn-success" onclick="">
+                Update Phone
+              </button> -->
+                <!-- <button id="btnClose" type="button" class="btn btn-danger" data-dismiss="modal">
+                Close
+              </button> -->
               </div>
             </div>
           </div>
@@ -324,7 +309,8 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <script src="../models/Products.js"></script>
     <script src="../services/productAPI.js"></script>
-    <script src="../controller/main.js"></script>
+    <script src="../controllers/main.js"></script>
   </body>
 </html>
