@@ -3,48 +3,15 @@ let danhSachSanPham = [];
 let sortFlag = "";
 
 // Hàm gửi yêu cầu lấy danh sách sản phẩm từ API
-function getProducts(searchValue) {
-  apiGetProducts(searchValue)
-    .then((response) => {
-      // Call API thành công
-      const products = response.data.map((product) => {
-        return new Products(
-          product.id,
-          product.name,
-          product.price,
-          product.img,
-          product.desc
-        );
-      });
-      danhSachSanPham = response.data;
-      renderProducts(response.data);
-    })
-    .catch((error) => {
-      // Call API thất bại
-      alert("API get products error");
-    });
-}
-
-// Hàm thêm sản phẩm
-function createProduct() {
-  const product = {
-    name: getElement("#nameProduct").value,
-    price: getElement("#Price").value,
-    screen: getElement("#Screen").value,
-    backCamera: getElement("#backCamera").value,
-    frontCamera: getElement("#frontCamera").value,
-    img: getElement("#imgLink").value,
-    desc: getElement("#description").value,
-    type: getElement("#chooseBrand").value,
-  };
-
-  apiCreateProducts(product)
-    .then((response) => {
-      getProducts();
-    })
-    .catch((error) => {
-      alert("Thêm sản phẩm thất bại");
-    });
+function getProducts() {
+  axios({
+    method: "GET",
+    url: "https://63f11fda5703e063fa532dfb.mockapi.io/api/products",
+  }).then((response) => {
+    // Call API thành công
+    danhSachSanPham = response.data;
+    renderProducts(response.data);
+  });
 }
 
 // Hàm hiển thị danh sách sản phẩm ra table
@@ -62,9 +29,7 @@ function renderProducts(products) {
                 </td>
                 <td>${product.desc}</td>
                 <td> 
-                    <button type="button" class="btn btn-secondary" onclick="selectProduct('${
-                      product.id
-                    }')">Edit</button>
+                    <button type="button" class="btn btn-secondary">Edit</button>
                     <button type="button" class="btn btn-danger" onclick="deleteProduct(${
                       product.id
                     })">Delete</button>
@@ -76,55 +41,6 @@ function renderProducts(products) {
   getElement("#tblListProducts").innerHTML = html;
 }
 
-// Hàm lấy dữ liệu của 1 sản phẩm hiển thị lên input modal
-function selectProduct(productId) {
-  apiGetProductById(productId)
-    .then((response) => {
-      const product = response.data;
-      getElement("#nameProduct").value = product.name;
-      getElement("#Price").value = product.price;
-      getElement("#Screen").value = product.screen;
-      getElement("#backCamera").value = product.backCamera;
-      getElement("#frontCamera").value = product.frontCamera;
-      getElement("#imgLink").value = product.img;
-      getElement("#description").value = product.desc;
-      getElement("#chooseBrand").value = product.type;
-
-      // Mở và cập nhật giao diện modal
-      getElement(".modal-title").innerHTML = "Cập nhật sản phẩm";
-      getElement(".modal-footer").innerHTML = `
-                <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                <button class="btn btn-primary" onclick="updateProduct('${product.id}')">Cập nhật</button>
-            `;
-      $("#myModal").modal("show");
-    })
-    .catch((error) => {
-      alert("Lấy chi tiết sản phẩm thất bại");
-    });
-}
-
-// Hàm cập nhật sản phẩm
-function updateProduct(productId) {
-  const product = {
-    name: getElement("#nameProduct").value,
-    price: getElement("#Price").value,
-    screen: getElement("#Screen").value,
-    backCamera: getElement("#backCamera").value,
-    frontCamera: getElement("#frontCamera").value,
-    img: getElement("#imgLink").value,
-    desc: getElement("#description").value,
-    type: getElement("#chooseBrand").value,
-  };
-
-  apiUpdateProduct(productId, product)
-    .then((response) => {
-      getProducts();
-    })
-    .catch((error) => {
-      alert("Cập nhật sản phẩm thât bại");
-    });
-}
-
 //Ham xoa san pham
 function deleteProduct(productId) {
   apiDeleteProduct(productId)
@@ -134,18 +50,6 @@ function deleteProduct(productId) {
     .catch(() => {
       alert("Something wrong!");
     });
-}
-
-// Hàm reset các input
-function resetInput() {
-  getElement("#nameProduct").value = "";
-  getElement("#Price").value = "";
-  getElement("#Screen").value = "";
-  getElement("#backCamera").value = "";
-  getElement("#frontCamera").value = "";
-  getElement("#imgLink").value = "";
-  getElement("#description").value = "";
-  getElement("#chooseBrand").value = "";
 }
 
 // getElement("#btnAddPhone").onclick = function () {
@@ -266,28 +170,8 @@ function sortByPrice() {
   // }
   renderProducts(danhSachSanPham);
 }
-// ====================== DOM ========================
-getElement("#btnAddProduct").addEventListener("click", () => {
-  getElement(".modal-title").innerHTML = "Thêm sản phẩm";
-  getElement(".modal-footer").innerHTML = `
-    <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-    <button class="btn btn-primary" onclick="createProduct(), resetInput()">Thêm</button>
-    `;
-});
-
-getElement("#txtSearch").addEventListener("keydown", (event) => {
-  // event là 1 object chứa thông tin về sự kiện được phát sinh
-  // event.target: trả ra cái element phát sinh ra sự kiện
-
-  if (event.key !== "Enter") return;
-
-  const searchValue = event.target.value;
-  getProducts(searchValue);
-});
-
 getElement("#sort").onclick = sortByPrice;
 
-// ================= Helper =================
 function getElement(selector) {
   return document.querySelector(selector);
 }
