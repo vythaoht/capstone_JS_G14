@@ -1,4 +1,6 @@
 getProducts();
+let danhSachSanPham = [];
+let sortFlag = "";
 
 // Hàm gửi yêu cầu lấy danh sách sản phẩm từ API
 function getProducts() {
@@ -7,6 +9,7 @@ function getProducts() {
     url: "https://63f11fda5703e063fa532dfb.mockapi.io/api/products",
   }).then((response) => {
     // Call API thành công
+    danhSachSanPham = response.data;
     renderProducts(response.data);
   });
 }
@@ -151,6 +154,23 @@ function isCheckEmpty(idInput, idSpan, message) {
   getElement(`#${idSpan}`).style.display = "none";
   return false;
 }
+
+//SORT BY PRICE
+function sortByPrice() {
+  if (!sortFlag || sortFlag === "desc") {
+    danhSachSanPham.sort((a, b) => a.price - b.price);
+    sortFlag = "asc";
+  } else if (sortFlag === "asc") {
+    danhSachSanPham.sort((a, b) => b.price - a.price);
+    sortFlag = "desc";
+  }
+  // if(sortFlag === "desc") {
+  //     danhSachSanPham.sort((a, b) => a.price - b.price);
+  //     sortFlag = "asc";
+  // }
+  renderProducts(danhSachSanPham);
+}
+getElement("#sort").onclick = sortByPrice;
 
 function getElement(selector) {
   return document.querySelector(selector);
