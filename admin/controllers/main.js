@@ -1,6 +1,7 @@
-getProducts();
 let danhSachSanPham = [];
 let sortFlag = "";
+
+getProducts();
 
 // Hàm gửi yêu cầu lấy danh sách sản phẩm từ API
 function getProducts(searchValue) {
@@ -148,7 +149,7 @@ function resetInput() {
   getElement("#chooseBrand").value = "";
 }
 
-// getElement("#btnAddPhone").onclick = function () {
+// getElement("#btnAddProduct").onclick = function () {
 //   let isCheck = isValidate();
 //   if (isCheck === true) {
 //     alert("Thoa dieu kien validation, co the add");
@@ -291,3 +292,4 @@ getElement("#sort").onclick = sortByPrice;
 function getElement(selector) {
   return document.querySelector(selector);
 }
+
