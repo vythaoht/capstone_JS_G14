@@ -1,5 +1,5 @@
-getProducts();
 let cartProducts = getProductListCart();
+getProducts();
 
 function getProducts() {
   apiGetProducts()
