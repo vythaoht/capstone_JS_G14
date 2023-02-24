@@ -1,18 +1,5 @@
 getProducts();
-let cartProducts = [
-  {
-    name: "Iphone 13",
-    img: "https://media.wired.com/photos/6148ef98a680b1f2086efee0/1:1/w_1037,h_1037,c_limit/Gear-Review-Apple_iphone13_hero_us_09142021.jpg",
-    quantity: 1,
-    price: 45_000_000,
-  },
-  {
-    name: "Iphone 14",
-    img: "https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/11/2/1112224/Iphone-14.jpg",
-    quantity: 2,
-    price: 90_000_000,
-  },
-];
+let cartProducts = getProductListCart();
 
 function getProducts() {
   apiGetProducts()
@@ -95,6 +82,40 @@ function renderCart(ds) {
 getElement("#showCart").onclick = function () {
   renderCart(cartProducts);
 };
+
+// Hàm thêm sản phẩm vào giỏ hàng
+function createProductListCart() {}
+
+function storeProductList() {
+  // chuyển Array productListCart thành JSON
+  const json = JSON.stringify(productListCart);
+  // Lưu xuống localStorage với key là productListCart
+  localStorage.setItem("productListCart", json);
+}
+
+function getProductListCart() {
+  // Lấy danh sách data từ LocalStorage với key là productListCart
+  const json = localStorage.getItem("productListCart");
+
+  if (!json) {
+    return [];
+  }
+
+  // Chuyển JSON thành Array
+  const productListCart = JSON.parse(json);
+  for (let index = 0; index < productListCart.length; index++) {
+    const productCart = productListCart[index];
+    productListCart[index] = new ProductCart(
+      productCart.id,
+      productCart.name,
+      productCart.price,
+      productCart.img,
+      productCart.quality
+    );
+  }
+  return productListCart;
+}
+
 //=== DOM ===
 function getElement(selector) {
   return document.querySelector(selector);
