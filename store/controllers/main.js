@@ -104,6 +104,19 @@ function createProductListCart(id) {
   storeProductList();
 }
 
+// Hàm tìm kiếm theo type
+function selectTypeChange() {
+  let select = getElement("#selectList").value;
+
+  let item = cart.filter((typeSelect) => {
+    let type = typeSelect.type;
+
+    return type.indexOf(select) !== -1;
+  });
+
+  renderProducts(item);
+}
+
 function storeProductList() {
   // chuyển Array cartProducts thành JSON
   const json = JSON.stringify(cartProducts);
