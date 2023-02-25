@@ -1,6 +1,5 @@
 let cartProducts = getProductListCart();
-
-// console.log(cartProducts);
+let cart = [];
 
 getProducts();
 
@@ -8,6 +7,7 @@ function getProducts() {
   apiGetProducts()
     .then((response) => {
       renderProducts(response.data);
+      cart = response.data;
     })
     .catch((error) => {
       alert(error);
@@ -45,7 +45,7 @@ function renderProducts(ds) {
             <p class="card-text">
               <small class="text-muted">Price: ${item.price}</small>
             </p>
-            <button class="btn btn__add" onclick="{this.createProductListCart}">Add to cart</button>
+            <button class="btn btn__add" onclick="createProductListCart('${item.id}')">Add to cart</button>
           </div>
         </div>
       `
@@ -75,8 +75,8 @@ function renderCart(ds) {
               </div>
             </td>
             <td>${value.price.toLocaleString()}</td>
-          </tr>
-        `
+        </tr>
+      `
     );
   }, "");
 
@@ -87,29 +87,21 @@ getElement("#showCart").onclick = function () {
   renderCart(cartProducts);
 };
 
-
-
 // Hàm thêm sản phẩm vào giỏ hàng
-function createProductListCart(event) {
-  const cardItem = {
-    name: event.target.Product.name,
-    price: event.target.Product.price,
-    img: event.target.Product.img,
-    quantity: 1
-  } 
+function createProductListCart(id) {
+  let item = cart.find((item) => item.id === id);
 
-  apiCreateCartItem(cardItem)
-    .then((response) => {
-      renderCart(response.data);
-    })
-    .catch((error) => {
-      alert(error);
-    })
+  const cardItem = new ProductCart(
+    item.id,
+    item.name,
+    item.price,
+    item.img,
+    1,
+  );
 
-  // renderCart();
+  cartProducts.push(cardItem);
 
-  // storeProductList();
-
+  storeProductList();
 }
 
 function storeProductList() {
@@ -131,12 +123,12 @@ function getProductListCart() {
   const cartProducts = JSON.parse(json);
   for (let index = 0; index < cartProducts.length; index++) {
     const productCart = cartProducts[index];
-    cartProducts[index] = new Product(
+    cartProducts[index] = new ProductCart(
       productCart.id,
       productCart.name,
       productCart.price,
       productCart.img,
-      // productCart.quality
+      productCart.quantity
     );
   }
   return cartProducts;
