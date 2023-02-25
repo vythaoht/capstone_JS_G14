@@ -27,6 +27,19 @@ header .navbar {
 .carousel .carousel__products .card-group .btn__add {
   background-color: #efd3df;
 }
+.carousel .carousel__select {
+  background-color: #f3e2ea;
+}
+.carousel .carousel__select .card-group {
+  gap: 20px;
+}
+.carousel .carousel__select .card-group .form-select {
+  display: block;
+  padding: 5px 7px;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
 
 .modal__carousel .modal-header {
   background-color: #efd3df;
