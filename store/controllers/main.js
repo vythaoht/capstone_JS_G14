@@ -1,5 +1,5 @@
-let cartProducts = getProductListCart();
-let cart = [];
+let cartProducts = getProductListCart(); // gio hang
+let products = [];
 
 getProducts();
 
@@ -7,7 +7,7 @@ function getProducts() {
   apiGetProducts()
     .then((response) => {
       renderProducts(response.data);
-      cart = response.data;
+      products = response.data;
     })
     .catch((error) => {
       alert(error);
@@ -74,7 +74,14 @@ function renderCart(ds) {
                 <button class="quantity__button">+</button>
               </div>
             </td>
-            <td>${value.price.toLocaleString()}</td>
+            <td>${value.price.toLocaleString()}
+            </td>
+            <td>
+              <button class="btn btn-danger" onclick="deleteProduct('${
+                value.id
+              }')">Delete</button>
+            </td>
+            
         </tr>
       `
     );
@@ -93,7 +100,7 @@ getElement("#showCart").onclick = function () {
 
 // Hàm thêm sản phẩm vào giỏ hàng
 function createProductListCart(id) {
-  let item = cart.find((item) => item.id === id);
+  let item = products.find((item) => item.id === id);
 
   const cardItem = new ProductCart(item.id, item.name, item.price, item.img, 1);
 
@@ -106,7 +113,7 @@ function createProductListCart(id) {
 function selectTypeChange() {
   let select = getElement("#selectList").value;
 
-  let item = cart.filter((typeSelect) => {
+  let item = products.filter((typeSelect) => {
     let type = typeSelect.type;
 
     return type.indexOf(select) !== -1;
@@ -143,6 +150,15 @@ function getProductListCart() {
     );
   }
   return cartProducts;
+}
+
+//Ham xoa san pham khoi gio hang
+function deleteProduct(productId) {
+  cartProducts = cartProducts.filter((product) => {
+    return product.id !== productId;
+  });
+  renderCart(cartProducts);
+  storeProductList();
 }
 
 //=== DOM ===
