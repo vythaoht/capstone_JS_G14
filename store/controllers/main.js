@@ -80,6 +80,10 @@ function renderCart(ds) {
     );
   }, "");
 
+  let totalPrice = ds.reduce((result, value) => {
+    return result + value.calcTotalPrice();
+  }, 0);
+  getElement("#totalPrice").innerHTML = totalPrice.toLocaleString();
   getElement("#tbodyCart").innerHTML = html;
 }
 
@@ -91,13 +95,7 @@ getElement("#showCart").onclick = function () {
 function createProductListCart(id) {
   let item = cart.find((item) => item.id === id);
 
-  const cardItem = new ProductCart(
-    item.id,
-    item.name,
-    item.price,
-    item.img,
-    1,
-  );
+  const cardItem = new ProductCart(item.id, item.name, item.price, item.img, 1);
 
   cartProducts.push(cardItem);
 
