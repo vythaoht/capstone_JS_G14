@@ -21,12 +21,10 @@
             background-color: $bg-color-pink-dark;
         }
 
-        & .modal-footer .btn__addProduct {
-            background-color: $bg-color-pink-dark;
-        }
-
-        & .modal-footer .btn__updateProduct {
-            background-color: $bg-color-pink-dark;
+        & .modal-footer {
+            .btn__addProduct .btn__updateProduct {
+                background-color: $bg-color-pink-dark;
+            }
         }
     }
 
