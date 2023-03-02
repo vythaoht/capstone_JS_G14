@@ -46,6 +46,7 @@ function createProduct() {
   apiCreateProducts(product)
     .then((response) => {
       getProducts();
+      resetInput();
     })
     .catch((error) => {
       alert("Thêm sản phẩm thất bại");
@@ -67,10 +68,12 @@ function renderProducts(products) {
             </td>
             <td>${product.desc}</td>
             <td> 
-                <button type="button" class="btn btn-secondary" onclick="selectProduct('${product.id
-      }')">Edit</button>
-                <button type="button" class="btn btn-danger" onclick="deleteProduct(${product.id
-      })">Delete</button>
+                <button type="button" class="btn btn-secondary" onclick="selectProduct('${
+                  product.id
+                }')">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteProduct(${
+                  product.id
+                })">Delete</button>
             </td>
         </tr>
       `
@@ -145,6 +148,8 @@ function deleteProduct(productId) {
 
 // Hàm reset các input
 function resetInput() {
+  console.log("hh");
+
   getElement("#nameProduct").value = "";
   getElement("#Price").value = "";
   getElement("#Screen").value = "";
@@ -153,6 +158,14 @@ function resetInput() {
   getElement("#imgLink").value = "";
   getElement("#description").value = "";
   getElement("#chooseBrand").value = "";
+  getElement("#tbName").style.display = "none";
+  getElement("#tbPrice").style.display = "none";
+  getElement("#tbScreen").style.display = "none";
+  getElement("#tbBackCamera").style.display = "none";
+  getElement("#tbFrontCamera").style.display = "none";
+  getElement("#tbImgLink").style.display = "none";
+  getElement("#tbDescription").style.display = "none";
+  getElement("#tbBrand").style.display = "none";
 }
 
 // getElement("#btnAddProduct").onclick = function () {
@@ -278,8 +291,9 @@ getElement("#btnAddProduct").addEventListener("click", () => {
   getElement(".modal-title").innerHTML = "Thêm sản phẩm";
   getElement(".modal-footer").innerHTML = `
     <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-    <button class="btn btn__addProduct" onclick="createProduct(), resetInput()">Thêm</button>
+    <button class="btn btn__addProduct" onclick="createProduct()">Thêm</button>
     `;
+  resetInput();
 });
 
 getElement("#txtSearch").addEventListener("keydown", (event) => {
@@ -295,4 +309,3 @@ getElement("#sort").onclick = sortByPrice;
 function getElement(selector) {
   return document.querySelector(selector);
 }
-
