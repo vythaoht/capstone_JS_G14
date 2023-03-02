@@ -6,11 +6,3 @@ function apiGetProducts() {
     url: URL,
   });
 }
-
-function apiUpdateProduct(productId, product) {
-  return axios({
-    method: "PUT",
-    url: `${URL}/${productId}`,
-    data: product,
-  });
-}

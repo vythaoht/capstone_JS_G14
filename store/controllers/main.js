@@ -69,21 +69,18 @@ function renderCart(ds) {
               <div
                 class="d-flex align-items-center justify-content-center"
               >
-                <button class="quantity__button" onclick="decreaseProduct('${
-                  value.id
-                }')">-</button>
+                <button class="quantity__button" onclick="decreaseProduct('${value.id
+      }')">-</button>
                 ${value.quantity}
-                <button class="quantity__button"  onclick="increaseProduct('${
-                  value.id
-                }')">+</button>
+                <button class="quantity__button"  onclick="increaseProduct('${value.id
+      }')">+</button>
               </div>
             </td>
             <td>${value.price.toLocaleString()}
             </td>
             <td>
-              <button class="btn btn-danger" onclick="deleteProduct('${
-                value.id
-              }')">Delete</button>
+              <button class="btn btn-danger" onclick="deleteProduct('${value.id
+      }')">Delete</button>
             </td>
         </tr>
       `
@@ -104,26 +101,19 @@ getElement("#showCart").onclick = function () {
 
 // Hàm thêm sản phẩm vào giỏ hàng
 function createProductListCart(id) {
-  let item = products.find((item) => item.id === id);
+  let findId = cartProducts.find((item) => item.id === id);
 
-  const cardItem = new ProductCart(item.id, item.name, item.price, item.img, 1);
+  if (!findId) {
+    let item = products.find((item) => item.id === id);
 
-  cartProducts.push(cardItem);
+    const cardItem = new ProductCart(item.id, item.name, item.price, item.img, item.quantity = 1);
+    cartProducts.push(cardItem);
+  }
+  else {
+      findId.quantity++;
+  }
 
   storeProductList();
-}
-
-// Hàm cập nhật số lượng
-function updateQuatity(productId) {
-  let item = products.find((item) => item.id === id);
-
-  apiUpdateProduct(productId, item.quantity)
-    .then((response) => {
-      getProducts();
-    })
-    .catch((error) => {
-      alert("Cập nhật sản phẩm thât bại");
-    });
 }
 
 // Hàm tìm kiếm theo type
@@ -142,6 +132,7 @@ function selectTypeChange() {
 // Hàm thanh toán
 function payCart() {
   localStorage.clear();
+  cartProducts = [];
   renderCart([]);
 }
 
