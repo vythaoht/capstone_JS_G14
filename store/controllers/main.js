@@ -77,11 +77,8 @@ function renderCart(ds) {
             <td>${value.price.toLocaleString()}
             </td>
             <td>
-              <button class="btn btn-danger" onclick="deleteProduct('${
-                value.id
-              }')">Delete</button>
+              <button class="btn btn-danger" onclick="deleteProduct('${value.id}')">Delete</button>
             </td>
-            
         </tr>
       `
     );
@@ -90,6 +87,7 @@ function renderCart(ds) {
   let totalPrice = ds.reduce((result, value) => {
     return result + value.calcTotalPrice();
   }, 0);
+
   getElement("#totalPrice").innerHTML = totalPrice.toLocaleString();
   getElement("#tbodyCart").innerHTML = html;
 }
@@ -109,6 +107,19 @@ function createProductListCart(id) {
   storeProductList();
 }
 
+// Hàm cập nhật số lượng
+function updateQuatity(productId) {
+  let item = products.find((item) => item.id === id);
+
+  apiUpdateProduct(productId, item.quantity)
+    .then((response) => {
+      getProducts();
+    })
+    .catch((error) => {
+      alert("Cập nhật sản phẩm thât bại");
+    });
+}
+
 // Hàm tìm kiếm theo type
 function selectTypeChange() {
   let select = getElement("#selectList").value;
@@ -120,6 +131,12 @@ function selectTypeChange() {
   });
 
   renderProducts(item);
+}
+
+// Hàm thanh toán
+function payCart() {
+  localStorage.clear();
+  renderCart([]);
 }
 
 function storeProductList() {

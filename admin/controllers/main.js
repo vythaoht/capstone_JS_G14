@@ -54,24 +54,24 @@ function renderProducts(products) {
     return (
       result +
       `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${product.name}</td>
-                <td>${Intl.NumberFormat("vn-VN").format(product.price)}</td>
-                <td>
-                    <img src="${product.img}" width="100" height="100" /> 
-                </td>
-                <td>${product.desc}</td>
-                <td> 
-                    <button type="button" class="btn btn-secondary" onclick="selectProduct('${
-                      product.id
-                    }')">Edit</button>
-                    <button type="button" class="btn btn-danger" onclick="deleteProduct(${
-                      product.id
-                    })">Delete</button>
-                </td>
-            </tr>
-        `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${product.name}</td>
+            <td>${Intl.NumberFormat("vn-VN").format(product.price)}</td>
+            <td>
+                <img src="${product.img}" width="100" height="100" /> 
+            </td>
+            <td>${product.desc}</td>
+            <td> 
+                <button type="button" class="btn btn-secondary" onclick="selectProduct('${
+                  product.id
+                }')">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteProduct(${
+                  product.id
+                })">Delete</button>
+            </td>
+        </tr>
+      `
     );
   }, "");
   getElement("#tblListProducts").innerHTML = html;
@@ -95,7 +95,7 @@ function selectProduct(productId) {
       getElement(".modal-title").innerHTML = "Cập nhật sản phẩm";
       getElement(".modal-footer").innerHTML = `
                 <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                <button class="btn btn-primary" onclick="updateProduct('${product.id}')">Cập nhật</button>
+                <button class="btn btn__updateProduct" onclick="updateProduct('${product.id}')">Cập nhật</button>
             `;
       $("#myModal").modal("show");
     })
@@ -272,14 +272,11 @@ getElement("#btnAddProduct").addEventListener("click", () => {
   getElement(".modal-title").innerHTML = "Thêm sản phẩm";
   getElement(".modal-footer").innerHTML = `
     <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-    <button class="btn btn-primary" onclick="createProduct(), resetInput()">Thêm</button>
+    <button class="btn btn__addProduct" onclick="createProduct(), resetInput()">Thêm</button>
     `;
 });
 
 getElement("#txtSearch").addEventListener("keydown", (event) => {
-  // event là 1 object chứa thông tin về sự kiện được phát sinh
-  // event.target: trả ra cái element phát sinh ra sự kiện
-
   if (event.key !== "Enter") return;
 
   const searchValue = event.target.value;
