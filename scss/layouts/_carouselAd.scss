@@ -1,0 +1,33 @@
+.carouselAd {
+    margin-top: 5rem;
+    background-color: $color-pink;
+
+    & .carouselAd__content {
+
+        & .card__header {
+            margin: 2rem;
+            color: $color-pink-light;
+        }
+
+        & .card__body #btnAddProduct {
+            background-color: $bg-color-pink-dark;
+            color: black;
+
+        }
+    }
+
+    & .carouselAd__modal {
+        & .modal-header {
+            background-color: $bg-color-pink-dark;
+        }
+
+        & .modal-footer .btn__addProduct {
+            background-color: $bg-color-pink-dark;
+        }
+
+        & .modal-footer .btn__updateProduct {
+            background-color: $bg-color-pink-dark;
+        }
+    }
+
+}

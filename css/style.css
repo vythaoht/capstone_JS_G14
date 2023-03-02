@@ -58,6 +58,28 @@ header .navbar {
     flex: unset;
   }
 }
+.carouselAd {
+  margin-top: 5rem;
+  background-color: #f3e2ea;
+}
+.carouselAd .carouselAd__content .card__header {
+  margin: 2rem;
+  color: #f752ba;
+}
+.carouselAd .carouselAd__content .card__body #btnAddProduct {
+  background-color: #efd3df;
+  color: black;
+}
+.carouselAd .carouselAd__modal .modal-header {
+  background-color: #efd3df;
+}
+.carouselAd .carouselAd__modal .modal-footer .btn__addProduct {
+  background-color: #efd3df;
+}
+.carouselAd .carouselAd__modal .modal-footer .btn__updateProduct {
+  background-color: #efd3df;
+}
+
 .table__cart td {
   vertical-align: middle;
 }
