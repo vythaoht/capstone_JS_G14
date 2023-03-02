@@ -39,6 +39,10 @@ function createProduct() {
     type: getElement("#chooseBrand").value,
   };
 
+  if (!isValidate()) {
+    return;
+  }
+
   apiCreateProducts(product)
     .then((response) => {
       getProducts();
@@ -63,12 +67,10 @@ function renderProducts(products) {
             </td>
             <td>${product.desc}</td>
             <td> 
-                <button type="button" class="btn btn-secondary" onclick="selectProduct('${
-                  product.id
-                }')">Edit</button>
-                <button type="button" class="btn btn-danger" onclick="deleteProduct(${
-                  product.id
-                })">Delete</button>
+                <button type="button" class="btn btn-secondary" onclick="selectProduct('${product.id
+      }')">Edit</button>
+                <button type="button" class="btn btn-danger" onclick="deleteProduct(${product.id
+      })">Delete</button>
             </td>
         </tr>
       `
@@ -116,6 +118,10 @@ function updateProduct(productId) {
     desc: getElement("#description").value,
     type: getElement("#chooseBrand").value,
   };
+
+  if (!isValidate()) {
+    return;
+  }
 
   apiUpdateProduct(productId, product)
     .then((response) => {
@@ -217,7 +223,7 @@ function isValidate() {
     "Front camera không được để trống"
   );
   let isEmptyDescription = isCheckEmpty(
-    "Description",
+    "description",
     "tbDescription",
     "Vui lòng nhập mô tả sản phẩm"
   );
