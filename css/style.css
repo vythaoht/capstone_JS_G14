@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+.modal-dialog {
+  max-width: 600px;
+}
+
+.card-group > .card {
+  flex: unset;
+}
+
 header {
   background-color: #efd3df;
   height: 90px;
@@ -22,7 +30,8 @@ header .navbar {
   background-color: #f3e2ea;
 }
 .carousel .carousel__products .card-group {
-  gap: 20px;
+  margin: auto;
+  row-gap: 10px;
 }
 .carousel .carousel__products .card-group .btn__add {
   background-color: #efd3df;
