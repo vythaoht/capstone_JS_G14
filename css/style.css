@@ -82,10 +82,7 @@ header .navbar {
 .carouselAd .carouselAd__modal .modal-header {
   background-color: #efd3df;
 }
-.carouselAd .carouselAd__modal .modal-footer .btn__addProduct {
-  background-color: #efd3df;
-}
-.carouselAd .carouselAd__modal .modal-footer .btn__updateProduct {
+.carouselAd .carouselAd__modal .modal-footer .btn__addProduct .btn__updateProduct {
   background-color: #efd3df;
 }
 
