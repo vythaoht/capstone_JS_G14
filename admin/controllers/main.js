@@ -64,11 +64,11 @@ function renderProducts(products) {
             <td>${product.name}</td>
             <td>${Intl.NumberFormat("vn-VN").format(product.price)}</td>
             <td>
-                <img src="${product.img}" width="100" height="100" /> 
+                <img src="${product.img}" width="150" height="150" /> 
             </td>
             <td>${product.desc}</td>
             <td> 
-                <button type="button" class="btn btn-secondary" onclick="selectProduct('${
+                <button type="button" class="btn btn-secondary mb-2" onclick="selectProduct('${
                   product.id
                 }')">Edit</button>
                 <button type="button" class="btn btn-danger" onclick="deleteProduct(${
@@ -167,15 +167,6 @@ function resetInput() {
   getElement("#tbDescription").style.display = "none";
   getElement("#tbBrand").style.display = "none";
 }
-
-// getElement("#btnAddProduct").onclick = function () {
-//   let isCheck = isValidate();
-//   if (isCheck === true) {
-//     alert("Thoa dieu kien validation, co the add");
-//   } else {
-//     alert("That bai");
-//   }
-// };
 
 // VALIDATION
 function isValidate() {
