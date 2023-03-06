@@ -7,13 +7,25 @@
         & .card__header {
             margin: 2rem;
             color: $color-pink-light;
+
+            & h1 {
+                // font-size: 4rem; 
+                text-transform: uppercase;
+            }
         }
 
-        & .card__body #btnAddProduct {
-            background-color: $bg-color-pink-dark;
-            color: black;
+        & .card__body {
+            #btnAddProduct {
+                background-color: $bg-color-pink-dark;
+                color: black;
+    
+            }
 
+            #tableProduct {
+                overflow-x: auto;
+            }
         }
+        
     }
 
     & .carouselAd__modal {
@@ -22,8 +34,22 @@
         }
 
         & .modal-footer {
-            .btn__addProduct .btn__updateProduct {
+            .btn__addProduct, .btn__updateProduct {
                 background-color: $bg-color-pink-dark;
+            }
+        }
+    }
+}
+
+//Man hinh desktop tu 992px tro len
+@include responsive("lg") {
+    .carouselAd {
+        & .carouselAd__content {
+
+            & .card__header {
+                & h1 {
+                    font-size: 2.5rem; 
+                }
             }
         }
     }

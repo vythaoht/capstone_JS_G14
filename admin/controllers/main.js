@@ -148,8 +148,6 @@ function deleteProduct(productId) {
 
 // Hàm reset các input
 function resetInput() {
-  console.log("hh");
-
   getElement("#nameProduct").value = "";
   getElement("#Price").value = "";
   getElement("#Screen").value = "";
@@ -300,3 +298,4 @@ getElement("#sort").onclick = sortByPrice;
 function getElement(selector) {
   return document.querySelector(selector);
 }
+
