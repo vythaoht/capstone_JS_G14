@@ -75,17 +75,28 @@ header .navbar {
   margin: 2rem;
   color: #f752ba;
 }
+.carouselAd .carouselAd__content .card__header h1 {
+  text-transform: uppercase;
+}
 .carouselAd .carouselAd__content .card__body #btnAddProduct {
   background-color: #efd3df;
   color: black;
 }
+.carouselAd .carouselAd__content .card__body #tableProduct {
+  overflow-x: auto;
+}
 .carouselAd .carouselAd__modal .modal-header {
   background-color: #efd3df;
 }
-.carouselAd .carouselAd__modal .modal-footer .btn__addProduct .btn__updateProduct {
+.carouselAd .carouselAd__modal .modal-footer .btn__addProduct, .carouselAd .carouselAd__modal .modal-footer .btn__updateProduct {
   background-color: #efd3df;
 }
 
+@media screen and (max-width: 992px) {
+  .carouselAd .carouselAd__content .card__header h1 {
+    font-size: 2.5rem;
+  }
+}
 .table__cart td {
   vertical-align: middle;
 }
@@ -101,40 +112,34 @@ header .navbar {
   background-color: transparent;
 }
 
-.table.dataTable > thead > tr > th:not(.sorting_disabled), .table.dataTable > thead > tr > td:not(.sorting_disabled) {
-  padding-right: 30px;
-}
-.table.dataTable > thead > tr > th:active, .table.dataTable > thead > tr > td:active {
-  outline: none;
-}
-.table.dataTable > thead .sorting, .table.dataTable > thead .sorting_asc, .table.dataTable > thead .sorting_desc, .table.dataTable > thead .sorting_asc_disabled, .table.dataTable > thead .sorting_desc_disabled {
+table.dataTable > thead .sorting, table.dataTable > thead .sorting_asc, table.dataTable > thead .sorting_desc, table.dataTable > thead .sorting_asc_disabled, table.dataTable > thead .sorting_desc_disabled {
   cursor: pointer;
   position: relative;
 }
-.table.dataTable > thead .sorting::before, .table.dataTable > thead .sorting_asc::before, .table.dataTable > thead .sorting_desc::before, .table.dataTable > thead .sorting_asc_disabled::before, .table.dataTable > thead .sorting_desc_disabled::before {
+table.dataTable > thead .sorting::before, table.dataTable > thead .sorting_asc::before, table.dataTable > thead .sorting_desc::before, table.dataTable > thead .sorting_asc_disabled::before, table.dataTable > thead .sorting_desc_disabled::before {
   right: 1em;
   content: "↑";
 }
-.table.dataTable > thead .sorting:before, .table.dataTable > thead .sorting:after, .table.dataTable > thead .sorting_asc:before, .table.dataTable > thead .sorting_asc:after, .table.dataTable > thead .sorting_desc:before, .table.dataTable > thead .sorting_desc:after, .table.dataTable > thead .sorting_asc_disabled:before, .table.dataTable > thead .sorting_asc_disabled:after, .table.dataTable > thead .sorting_desc_disabled:before, .table.dataTable > thead .sorting_desc_disabled:after {
-  position: absolute;
-  bottom: 0.9em;
-  display: block;
-  opacity: 0.3;
-}
-.table.dataTable > thead .sorting_asc:before, .table.dataTable > thead .sorting_desc:after {
+table.dataTable > thead .sorting_asc::before, table.dataTable > thead .sorting_desc::after {
   opacity: 1;
 }
-.table.dataTable > thead .sorting:after, .table.dataTable > thead .sorting_asc:after, .table.dataTable > thead .sorting_desc:after, .table.dataTable > thead .sorting_asc_disabled:after, .table.dataTable > thead .sorting_desc_disabled:after {
+table.dataTable > thead > tr > th:not(.sorting_disabled), table.dataTable > thead > tr > td:not(.sorting_disabled) {
+  padding-right: 30px;
+}
+table.dataTable > thead > tr > th:active, table.dataTable > thead > tr > td:active {
+  outline: none;
+}
+table.dataTable > thead .sorting::after, table.dataTable > thead .sorting_asc::after, table.dataTable > thead .sorting_desc::after, table.dataTable > thead .sorting_asc_disabled::after, table.dataTable > thead .sorting_desc_disabled::after {
   right: 0.5em;
   content: "↓";
 }
-.table.dataTable > thead .sorting:before, .table.dataTable > thead .sorting:after, .table.dataTable > thead .sorting_asc:before, .table.dataTable > thead .sorting_asc:after, .table.dataTable > thead .sorting_desc:before, .table.dataTable > thead .sorting_desc:after, .table.dataTable > thead .sorting_asc_disabled:before, .table.dataTable > thead .sorting_asc_disabled:after, .table.dataTable > thead .sorting_desc_disabled:before, .table.dataTable > thead .sorting_desc_disabled:after {
+table.dataTable > thead .sorting::before, table.dataTable > thead .sorting::after, table.dataTable > thead .sorting_asc::before, table.dataTable > thead .sorting_asc::after, table.dataTable > thead .sorting_desc::before, table.dataTable > thead .sorting_desc::after, table.dataTable > thead .sorting_asc_disabled::before, table.dataTable > thead .sorting_asc_disabled::after, table.dataTable > thead .sorting_desc_disabled::before, table.dataTable > thead .sorting_desc_disabled::after {
   position: absolute;
   bottom: 0.9em;
   display: block;
   opacity: 0.3;
 }
-.table.table-bordered.dataTable th,
-.table.table-bordered.dataTable td {
+table.table-bordered.dataTable th,
+table.table-bordered.dataTable td {
   border-left-width: 0;
 }/*# sourceMappingURL=style.css.map */
