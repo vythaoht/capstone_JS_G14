@@ -66,9 +66,9 @@ function renderProducts(products) {
             <td>
                 <img src="${product.img}" width="150" height="150" /> 
             </td>
-            <td>${product.desc}</td>
+            <td width="600px">${product.desc}</td>
             <td> 
-                <button type="button" class="btn btn-secondary mb-2" onclick="selectProduct('${
+                <button type="button" class="btn btn-secondary" onclick="selectProduct('${
                   product.id
                 }')">Edit</button>
                 <button type="button" class="btn btn-danger" onclick="deleteProduct(${
@@ -99,8 +99,8 @@ function selectProduct(productId) {
       // Mở và cập nhật giao diện modal
       getElement(".modal-title").innerHTML = "Cập nhật sản phẩm";
       getElement(".modal-footer").innerHTML = `
-                <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                <button class="btn btn__updateProduct" onclick="updateProduct('${product.id}')">Cập nhật</button>
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn__updateProduct" onclick="updateProduct('${product.id}')">Update Phone</button>
             `;
       $("#myModal").modal("show");
     })
@@ -290,8 +290,8 @@ function sortByPrice() {
 getElement("#btnAddProduct").addEventListener("click", () => {
   getElement(".modal-title").innerHTML = "Thêm sản phẩm";
   getElement(".modal-footer").innerHTML = `
-    <button class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-    <button class="btn btn__addProduct" onclick="createProduct()">Thêm</button>
+    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button class="btn btn__addProduct" onclick="createProduct()">Add Phone</button>
     `;
   resetInput();
 });
