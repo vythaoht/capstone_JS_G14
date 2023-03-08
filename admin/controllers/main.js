@@ -260,6 +260,17 @@ function isCheckEmpty(idInput, idSpan, message) {
   return false;
 }
 
+//SEARCH BY NAME
+getElement("#basic-addon2").onclick = function () {
+  let searchText = getElement("#txtSearch").value;
+
+  let searchProductList = danhSachSanPham.filter((product) => {
+    return product.name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1;
+  });
+
+  renderProducts(searchProductList);
+};
+
 //SORT BY PRICE
 function sortByPrice() {
   if (!sortFlag || sortFlag === "desc") {
@@ -298,4 +309,3 @@ getElement("#sort").onclick = sortByPrice;
 function getElement(selector) {
   return document.querySelector(selector);
 }
-
